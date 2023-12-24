@@ -27,7 +27,7 @@ app.use(morgan('dev'));
 //cors policy
 // middleware
 app.use(cors({
-    origin: 'https://ecommerce-app-absr.vercel.app/',
+    origin: 'https://ecommerce-app-absr.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
