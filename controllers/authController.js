@@ -57,37 +57,41 @@ const registerController = async (req, res) => {
 const loginController = async (req, res) => {
   try {
     const { email, password } = req.body;
-    
-    //validation
-    console.log(email,password)
+
+    // Validation
     if (!email || !password) {
-      return res.status(404).send({
+      return res.status(401).send({
         success: false,
         message: "Invalid email or password",
       });
     }
-    //check user
+
+    // Check user
     const user = await userModel.findOne({ email });
     if (!user) {
-      return res.status(404).send({
+      return res.status(401).send({
         success: false,
-        message: "Email is not registerd",
+        message: "Email is not registered",
       });
     }
+
+    // Compare passwords
     const match = await comparePassword(password, user.password);
     if (!match) {
-      return res.status(200).send({
+      return res.status(401).send({
         success: false,
         message: "Invalid Password",
       });
     }
-    //token
+
+    // Generate token
     const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
+
     res.status(200).send({
       success: true,
-      message: "login successfully",
+      message: "Login successfully",
       user: {
         _id: user._id,
         name: user.name,
@@ -99,13 +103,14 @@ const loginController = async (req, res) => {
       token,
     });
   } catch (error) {
+    console.error("Error in login:", error);
     res.status(500).send({
       success: false,
       message: "Error in login",
-      err:{error}
     });
   }
 };
+
 
 const forgotPasswordController = async (req, res) => {
   try {
