@@ -57,6 +57,7 @@ const registerController = async (req, res) => {
 const loginController = async (req, res) => {
   try {
     const { email, password } = req.body;
+    
     //validation
     console.log(email,password)
     if (!email || !password) {
@@ -98,6 +99,7 @@ const loginController = async (req, res) => {
       token,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error in login",
