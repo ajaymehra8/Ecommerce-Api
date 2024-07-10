@@ -208,7 +208,7 @@ const getAllOrdersController = async (req, res) => {
   try {
       const orders = await orderModel
         .find({})
-        .populate("products", "-photo")
+        .populate("products")
         .populate("buyer");
       res.json(orders);
     }  catch (error) {
