@@ -31,7 +31,6 @@ const createProductController = async (req, res) => {
       product,
     });
   } catch (error) {
-    
     res.status(500).send({
       success: false,
       message: "Problem in creating product",
@@ -56,7 +55,6 @@ const getProductController = async (req, res) => {
       product,
     });
   } catch (error) {
-    
     res.status(4000).send({
       success: true,
       message: "Error in getting product",
@@ -76,7 +74,6 @@ const getOneProductController = async (req, res) => {
       product,
     });
   } catch (error) {
-    
     res.status(4000).send({
       success: true,
       message: "Error in getting single product",
@@ -93,7 +90,6 @@ const productPhotoController = async (req, res) => {
       return res.status(200).send(product.photo.data);
     }
   } catch (error) {
-    
     res.status(400).send({
       success: true,
       message: "Error in getting photo",
@@ -109,7 +105,6 @@ const deleteProductController = async (req, res) => {
       message: "Product deleted successfully",
     });
   } catch (error) {
-    
     res.status(400).send({
       success: true,
       message: "Error in deleting product",
@@ -165,7 +160,6 @@ const filterProductsController = async (req, res) => {
       products,
     });
   } catch (error) {
-    
     res.status(500).send({
       success: false,
       message: "Problem in filtering product",
@@ -208,7 +202,6 @@ const productListController = async (req, res) => {
       products,
     });
   } catch (error) {
-    
     res.status(500).send({
       success: false,
       message: "problem in pagination 2",
@@ -231,7 +224,6 @@ const productSearchController = async (req, res) => {
       .select("-photo");
     res.json(result);
   } catch (error) {
-    
     res.status(400).send({
       success: false,
       message: "Product not fount",
@@ -277,7 +269,6 @@ const productCategoryController = async (req, res) => {
       product,
     });
   } catch (error) {
-    
     res.status(400).send({
       success: false,
       message: "Error while showing product category wise",
@@ -296,7 +287,6 @@ const braintreeTokenController = async (req, res) => {
       }
     });
   } catch (error) {
-    
     res.status(400).send({
       success: false,
       message: "Problem in payment token",
@@ -335,7 +325,6 @@ const braintreePaymentController = async (req, res) => {
       }
     );
   } catch (error) {
-    
     res.status(400).send({
       success: false,
       message: "Problem in payment token",
